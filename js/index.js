@@ -17,7 +17,7 @@ async function getArticles(url) {
 
 		res.forEach((element) => {
 			articles.innerHTML += `
-                <div class="card">
+                <div class="card text-white bg-dark mb-3">
                     <div class="card-body">
                         <h5 class="card-title">${element.title}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Written by ${element.author}</h6>
