@@ -1,0 +1,70 @@
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	/* background: url('../img/babycows.jpg') center no-repeat; */
+	background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)),
+		url(../img/babycows.jpg) center/cover no-repeat;
+	background-size: cover;
+}
+
+.navbar {
+	padding-top: 2rem !important;
+	padding-bottom: 2rem !important;
+}
+
+.nav-link-yellow {
+	color: #ffe135 !important;
+}
+
+.container-padding {
+	padding-top: 2rem;
+}
+
+.content {
+	width: 100%;
+	height: 100vh;
+}
+
+.headline-container {
+	text-align: center;
+	padding-top: 10vh;
+}
+
+.headline-container h1 {
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	letter-spacing: 0.5rem;
+	text-transform: uppercase;
+	color: #fff;
+}
+
+.headline-container h2 {
+	text-transform: uppercase;
+	color: #fff;
+	font-style: italic;
+	padding-top: 1rem;
+	letter-spacing: 0.1rem;
+}
+
+.headline-animal-news {
+	border-bottom: solid 1px #ffe135;
+	padding-bottom: 0.2rem;
+}
+
+.content h3 {
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.articles {
+}
+
+footer h6 {
+	padding: 1rem 0;
+	color: #fff;
+}
