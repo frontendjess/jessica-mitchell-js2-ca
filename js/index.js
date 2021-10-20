@@ -9,8 +9,6 @@ const baseUrl = '';
 
 async function getArticles(url) {
 	try {
-		console.log('hi');
-
 		const response = await fetch('http://localhost:1337/articles');
 		const jsonResult = await response.json();
 		const res = jsonResult;
@@ -22,8 +20,7 @@ async function getArticles(url) {
                         <h5 class="card-title">${element.title}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Written by ${element.author}</h6>
                         <p class="card-text">${element.summary}</p>
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+                        <i class="far fa-heart" data-id="${element.id}" data-title="${element.title}" data-author="${element.author}"></i>
                     </div>
                 </div>
             `;
@@ -34,3 +31,13 @@ async function getArticles(url) {
 }
 
 getArticles(baseUrl);
+
+let likes = document.querySelectorAll('.fa-heart');
+
+likes.forEach((element) => {
+	element.onclick = function () {
+		element.classList.toggle('fas');
+		console.log(element);
+		console.log('this ran');
+	};
+});
