@@ -25,19 +25,50 @@ async function getArticles(url) {
                 </div>
             `;
 		});
+
+		let likes = document.querySelectorAll('.fa-heart');
+		console.log('likes', likes);
+
+		likes.forEach((element) => {
+			element.onclick = function () {
+				element.classList.toggle('fas');
+				console.log(element);
+
+				console.log(element.dataset.id);
+				console.log(element.dataset.title);
+				console.log(element.dataset.author);
+
+				// storing local storage to an object
+				let localStorageObject = {
+					id: element.dataset.id,
+					title: element.dataset.title,
+					author: element.dataset.author,
+				};
+
+				// add to local storage
+				let favorites = getStorageItem('favorites');
+				// look for if something is in the array
+				let isInStorage = favorites.find(
+					(articleObject) => articleObject.id === localStorageObject.id
+				);
+
+				console.log('isInStorage', isInStorage);
+
+				if (isInStorage === undefined) {
+					favorites.push(localStorageObject);
+					saveToLocalStorage('favorites', favorites);
+				} else {
+					let removedElementArray = favorites.filter(
+						(articleObject) => articleObject.id !== localStorageObject.id
+					);
+
+					saveToLocalStorage('favorites', removedElementArray);
+				}
+			};
+		});
 	} catch (error) {
 	} finally {
 	}
 }
 
 getArticles(baseUrl);
-
-let likes = document.querySelectorAll('.fa-heart');
-
-likes.forEach((element) => {
-	element.onclick = function () {
-		element.classList.toggle('fas');
-		console.log(element);
-		console.log('this ran');
-	};
-});
