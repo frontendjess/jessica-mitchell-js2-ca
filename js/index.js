@@ -5,6 +5,8 @@ import {
 
 import fetchData from './libs/fetchData.js';
 
+import renderHTMLToTheDom from './libs/displayHTML.js';
+
 const articles = document.querySelector('.articles');
 const search = document.querySelector('.search');
 
@@ -13,19 +15,33 @@ let articlesToRender = data;
 
 function fetchArticles() {
 	articles.innerHTML = '';
+	let HTML = '';
 
 	articlesToRender.forEach((element) => {
-		articles.innerHTML += `
-                <div class="card text-white bg-dark mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">${element.title}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Written by ${element.author}</h6>
-                        <p class="card-text">${element.summary}</p>
-                        <i class="far fa-heart" data-id="${element.id}" data-title="${element.title}" data-author="${element.author}"></i>
-                    </div>
+		// articles.innerHTML += `
+		//         <div class="card text-white bg-dark mb-3">
+		//             <div class="card-body">
+		//                 <h5 class="card-title">${element.title}</h5>
+		//                 <h6 class="card-subtitle mb-2 text-muted">Written by ${element.author}</h6>
+		//                 <p class="card-text">${element.summary}</p>
+		//                 <i class="far fa-heart" data-id="${element.id}" data-title="${element.title}" data-author="${element.author}"></i>
+		//             </div>
+		//         </div>
+		//     `;
+
+		HTML += `
+            <div class="card text-white bg-dark mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">${element.title}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Written by ${element.author}</h6>
+                    <p class="card-text">${element.summary}</p>
+                    <i class="far fa-heart" data-id="${element.id}" data-title="${element.title}" data-author="${element.author}"></i>
                 </div>
-            `;
+            </div>
+        `;
 	});
+
+	renderHTMLToTheDom(HTML, '.articles');
 
 	let likes = document.querySelectorAll('.fa-heart');
 	// console.log('likes', likes);
