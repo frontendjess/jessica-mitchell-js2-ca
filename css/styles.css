@@ -78,6 +78,12 @@ body {
 	color: #fff;
 }
 
+.nofavorites {
+	background-color: #ffe135;
+	color: #000;
+	padding: 1rem;
+}
+
 footer {
 	padding: 4rem 0;
 	color: #fff;
