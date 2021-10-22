@@ -92,7 +92,7 @@ search.onkeyup = function () {
 	const searchValue = event.target.value.trim().toLowerCase();
 
 	const filteredArticles = data.filter(function (article) {
-		if (article.title.toLowerCase().startsWith(searchValue)) {
+		if (article.title.toLowerCase().includes(searchValue)) {
 			return true;
 		}
 	});
