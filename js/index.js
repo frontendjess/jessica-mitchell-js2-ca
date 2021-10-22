@@ -5,24 +5,9 @@ import {
 
 import fetchData from './libs/fetchData.js';
 
-import { filteringAnArray } from './libs/filteringArray.js';
-
 const articles = document.querySelector('.articles');
-
-// const baseUrl = '';
-
-// async function getArticles(url) {
-// 	try {
-// 		const response = await fetch('http://localhost:1337/articles');
-// 		const jsonResult = await response.json();
-// 		const res = jsonResult;
-
-// 	} catch (error) {}
-// }
-
-// getArticles(baseUrl);
-
 const search = document.querySelector('.search');
+
 const data = await fetchData('http://localhost:1337/articles');
 let articlesToRender = data;
 
@@ -104,3 +89,5 @@ search.onkeyup = function () {
 	// getArticles();
 	fetchArticles();
 };
+
+//

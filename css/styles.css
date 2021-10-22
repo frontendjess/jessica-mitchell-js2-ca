@@ -11,6 +11,7 @@ body {
 	background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)),
 		url(../img/babycows.jpg) center/cover no-repeat;
 	background-size: cover;
+	background-attachment: fixed;
 }
 
 .navbar {
