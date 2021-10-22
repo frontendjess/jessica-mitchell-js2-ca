@@ -5,27 +5,61 @@ import {
 
 import fetchData from './libs/fetchData.js';
 
-const articles = document.querySelector('.articles');
+import renderHTMLToTheDom from './libs/displayHTML.js';
 
+// const articles = document.querySelector('.articles');
 const search = document.querySelector('.search');
+
+const favorites = getStorageItem('favorites');
+
 const data = await fetchData('http://localhost:1337/articles');
 let articlesToRender = data;
 
 function fetchArticles() {
-	articles.innerHTML = '';
+	// articles.innerHTML = '';
+	let HTML = '';
 
 	articlesToRender.forEach((element) => {
-		articles.innerHTML += `
-                <div class="card text-white bg-dark mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">${element.title}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Written by ${element.author}</h6>
-                        <p class="card-text">${element.summary}</p>
-                        <i class="far fa-heart" data-id="${element.id}" data-title="${element.title}" data-author="${element.author}"></i>
-                    </div>
+		// articles.innerHTML += `
+		//         <div class="card text-white bg-dark mb-3">
+		//             <div class="card-body">
+		//                 <h5 class="card-title">${element.title}</h5>
+		//                 <h6 class="card-subtitle mb-2 text-muted">Written by ${element.author}</h6>
+		//                 <p class="card-text">${element.summary}</p>
+		//                 <i class="far fa-heart" data-id="${element.id}" data-title="${element.title}" data-author="${element.author}"></i>
+		//             </div>
+		//         </div>
+		//     `;
+
+		let cssClass = '';
+
+		const doesObjectExist = favorites.find(function (fav) {
+			console.log('fav', fav);
+
+			return parseInt(fav.id) === element.id;
+		});
+
+		console.log('doesObjectExist', doesObjectExist);
+
+		if (doesObjectExist) {
+			cssClass = 'fa';
+		} else {
+			cssClass = 'far';
+		}
+
+		HTML += `
+            <div class="card text-white bg-dark mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">${element.title}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Written by ${element.author}</h6>
+                    <p class="card-text">${element.summary}</p>
+                    <i class="${cssClass} fa-heart" data-id="${element.id}" data-title="${element.title}" data-author="${element.author}"></i>
                 </div>
-            `;
+            </div>
+        `;
 	});
+
+	renderHTMLToTheDom(HTML, '.articles');
 
 	let likes = document.querySelectorAll('.fa-heart');
 	// console.log('likes', likes);
@@ -72,7 +106,7 @@ function fetchArticles() {
 fetchArticles();
 
 search.onkeyup = function () {
-	console.log(search.value);
+	// console.log(search.value);
 
 	const searchValue = event.target.value.trim().toLowerCase();
 
@@ -86,5 +120,8 @@ search.onkeyup = function () {
 
 	articlesToRender = filteredArticles;
 
+	// getArticles();
 	fetchArticles();
 };
+
+//

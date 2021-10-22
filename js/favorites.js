@@ -1,11 +1,8 @@
 import { getStorageItem } from './libs/localStorageHelpers.js';
 
-import fetchData from './libs/fetchData.js';
-
 import message from './components/message.js';
 import renderHTMLToTheDom from './libs/displayHTML.js';
 
-const articles = document.querySelector('.articles');
 const favorites = getStorageItem('favorites');
 
 if (favorites.length === 0) {
