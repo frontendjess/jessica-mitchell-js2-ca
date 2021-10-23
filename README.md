@@ -17,3 +17,7 @@ FEU 2 JavaScript course assignment
 - favorites page:
   -- the page should fetch the array of items stored in localStorage and display them or display a message that there are no items. &&&& (favorites.js)
   -- there should be a "clear all" button that clears localStorage (or just a specific key in localStorage) and reloads the display. Don't reload the page, just redraw the HTML. &&&& (favorites.js)
+
+### Resources
+
+- body image (img/babycows.jpg) resource unsplash.com Annie Spratt
