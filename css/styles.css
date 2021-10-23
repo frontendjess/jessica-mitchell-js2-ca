@@ -7,7 +7,6 @@
 }
 
 body {
-	/* background: url('../img/babycows.jpg') center no-repeat; */
 	background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)),
 		url(../img/babycows.jpg) center/cover no-repeat;
 	background-size: cover;
@@ -59,10 +58,6 @@ body {
 .content h3 {
 	color: #fff;
 	text-transform: uppercase;
-}
-
-.articles {
-	/* display: none; */
 }
 
 .filtering {

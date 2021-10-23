@@ -1,5 +1,4 @@
 import { getStorageItem } from './libs/localStorageHelpers.js';
-
 import message from './components/message.js';
 import renderHTMLToTheDom from './libs/displayHTML.js';
 
@@ -11,16 +10,6 @@ if (favorites.length === 0) {
 
 let HTML = '';
 favorites.forEach((element) => {
-	// articles.innerHTML += `
-	//     <div class="card text-white bg-dark mb-3">
-	//         <div class="card-body">
-	//             <h5 class="card-title">${element.title}</h5>
-	//             <h6 class="card-subtitle mb-2 text-muted">Written by ${element.author}</h6>
-	//             <i class="fa fa-heart" data-id="${element.id}" data-title="${element.title}" data-author="${element.author}"></i>
-	//         </div>
-	//     </div>
-	// `;
-
 	HTML += `
         <div class="card text-white bg-dark mb-3">
             <div class="card-body">
