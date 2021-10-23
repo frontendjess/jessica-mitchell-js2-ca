@@ -11,17 +11,33 @@ const search = document.querySelector('.search');
 const data = await fetchData('http://localhost:1337/articles');
 let articlesToRender = data;
 
+const favorites = getStorageItem('favorites');
+
 function fetchArticles() {
 	articles.innerHTML = '';
 
 	articlesToRender.forEach((element) => {
+		let cssClass = 'far';
+
+		const doesObjectExistInLocalStorage = favorites.find(function (fav) {
+			console.log(fav);
+
+			return parseInt(fav.id) === element.id;
+		});
+
+		console.log(doesObjectExistInLocalStorage);
+
+		if (doesObjectExistInLocalStorage) {
+			cssClass = 'fas';
+		}
+
 		articles.innerHTML += `
                 <div class="card text-white bg-dark mb-3">
                     <div class="card-body">
                         <h5 class="card-title">${element.title}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Written by ${element.author}</h6>
                         <p class="card-text">${element.summary}</p>
-                        <i class="far fa-heart" data-id="${element.id}" data-title="${element.title}" data-author="${element.author}"></i>
+                        <i class="${cssClass} fa-heart" data-id="${element.id}" data-title="${element.title}" data-author="${element.author}"></i>
                     </div>
                 </div>
             `;
@@ -33,6 +49,7 @@ function fetchArticles() {
 	likes.forEach((element) => {
 		element.onclick = function () {
 			element.classList.toggle('fas');
+			element.classList.toggle('far');
 			console.log(element);
 
 			console.log(element.dataset.id);
